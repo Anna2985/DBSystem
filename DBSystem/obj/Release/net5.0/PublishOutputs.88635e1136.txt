@@ -14,6 +14,7 @@ C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\
 C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\Microsoft.OpenApi.dll
 C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\MySql.Data.dll
+C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\Newtonsoft.Json.dll
 C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.Annotations.dll
 C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
@@ -40,7 +41,6 @@ C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\
 C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\MyOffice.dll
 C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\MyUI.dll
 C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\System.Management.dll
-C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\Newtonsoft.Json.dll
 C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\Interop.SpeechLib.dll
 C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\CSkin.dll
 C:\Users\Administrator\source\repos\DBSystem\DBSystem\obj\Release\net5.0\PubTmp\Out\zxing.dll

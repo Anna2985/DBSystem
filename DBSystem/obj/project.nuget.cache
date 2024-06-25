@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XvA3XzjYvJi6nKUmQEgG+nTxhdc28H3b2nMaWQp/fTGc7vQvTZooujKE2/3HI8RsG492phrZ5SaeoxOdp8s1tw==",
+  "dgSpecHash": "bxo+bBih7gobxa7qwxeiPmGsmA3RbV0XQaVltaaZAoJ083gTbC5IAynlU8Gn1SDWDP6C8G3sce6TcfKQ1SDZvQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\DBSystem\\DBSystem\\DBSystem.csproj",
   "expectedPackageFiles": [
@@ -17,6 +17,7 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.openapi\\1.6.14\\microsoft.openapi.1.6.14.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\mysql.data\\8.4.0\\mysql.data.8.4.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\swashbuckle.aspnetcore\\6.6.2\\swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\6.6.2\\swashbuckle.aspnetcore.annotations.6.6.2.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.6.2\\swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",

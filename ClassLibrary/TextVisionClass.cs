@@ -23,16 +23,14 @@ namespace ClassLibrary
         圖片,
         [Description("操作時間,VARCHAR,250,INDEX")]
         操作時間,
-        [Description("測試結果,VARCHAR,5000,NONE")]
-        測試結果,
-        [Description("Log,VARCHAR,1000,NONE")]
+        [Description("Log,LONGTEXT,10,NONE")]
         Log,
-        [Description("PD座標,VARCHAR,500,NONE")]
-        PD座標,
-        [Description("PR座標,VARCHAR,500,NONE")]
-        PR座標,
-        [Description("Keyword,VARCHAR,1000,NONE")]
+        [Description("座標,VARCHAR,500,NONE")]
+        座標,
+        [Description("keyword,VARCHAR,500,NONE")]
         keyword,
+        [Description("UI結果,VARCHAR,1000,NONE")]
+        UI結果
 
 
 
@@ -48,12 +46,12 @@ namespace ClassLibrary
         [JsonPropertyName("GUID")]
         public string GUID { get; set; }
         /// <summary>
-        /// user_id
+        /// 操作者姓名
         /// </summary>
         [JsonPropertyName("op_name")]
         public string 操作者姓名 { get; set; }
         /// <summary>
-        /// user_id
+        /// 操作者ID
         /// </summary>
         [JsonPropertyName("op_id")]
         public string 操作者ID { get; set; }
@@ -68,30 +66,25 @@ namespace ClassLibrary
         [JsonPropertyName("op_time")]
         public string 操作時間 { get; set; }
         /// <summary>
-        /// 測試時間
-        /// </summary>
-        [JsonPropertyName("ocr_results")]
-        public string 測試結果 { get; set; }
-        /// <summary>
         /// Log
         /// </summary>
         [JsonPropertyName("logs")]
-        public string Log { get; set; }
+        public object Log { get; set; }
         /// <summary>
-        /// PD座標
+        /// 座標
         /// </summary>
-        [JsonPropertyName("product_coord")]
-        public string PD座標 { get; set; }
-        /// <summary>
-        /// PR座標
-        /// </summary>
-        [JsonPropertyName("purReqs_coord")]
-        public string PR座標 { get; set; }
+        [JsonPropertyName("roi")]
+        public object 座標 { get; set; }
         /// <summary>
         /// keyword
         /// </summary>
         [JsonPropertyName("keywords")]
-        public string keyword { get; set; }
+        public object keyword { get; set; }
+        /// <summary>
+        /// UI結果
+        /// </summary>
+        [JsonPropertyName("UI_result")]
+        public object UI結果 { get; set; }
     }
 
 
