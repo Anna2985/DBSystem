@@ -598,15 +598,6 @@
         "runtime": {
           "bin/placeholder/ClassLibrary.dll": {}
         }
-      },
-      "HIS_DB_Lib/1.0.0": {
-        "type": "project",
-        "compile": {
-          "bin/placeholder/HIS_DB_Lib.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/HIS_DB_Lib.dll": {}
-        }
       }
     }
   },
@@ -2379,17 +2370,11 @@
       "type": "project",
       "path": "../ClassLibrary/ClassLibrary.csproj",
       "msbuildProject": "../ClassLibrary/ClassLibrary.csproj"
-    },
-    "HIS_DB_Lib/1.0.0": {
-      "type": "project",
-      "path": "../HIS_DB_Lib/HIS_DB_Lib.csproj",
-      "msbuildProject": "../HIS_DB_Lib/HIS_DB_Lib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "ClassLibrary >= 1.0.0",
-      "HIS_DB_Lib >= 1.0.0",
       "IGeekFan.AspNetCore.Knife4jUI >= 0.0.16",
       "MySql.Data >= 8.4.0",
       "Newtonsoft.Json >= 13.0.3",
@@ -2426,9 +2411,6 @@
           "projectReferences": {
             "C:\\Users\\Administrator\\source\\repos\\DBSystem\\ClassLibrary\\ClassLibrary.csproj": {
               "projectPath": "C:\\Users\\Administrator\\source\\repos\\DBSystem\\ClassLibrary\\ClassLibrary.csproj"
-            },
-            "C:\\Users\\Administrator\\source\\repos\\DBSystem\\HIS_DB_Lib\\HIS_DB_Lib.csproj": {
-              "projectPath": "C:\\Users\\Administrator\\source\\repos\\DBSystem\\HIS_DB_Lib\\HIS_DB_Lib.csproj"
             }
           }
         }

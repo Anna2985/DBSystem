@@ -30,7 +30,19 @@ namespace ClassLibrary
         [Description("keyword,VARCHAR,500,NONE")]
         keyword,
         [Description("UI結果,VARCHAR,1000,NONE")]
-        UI結果
+        UI結果,
+        [Description("批號,VARCHAR,100,NONE")]
+        批號,
+        [Description("單號,VARCHAR,100,NONE")]
+        單號,
+        [Description("藥名,VARCHAR,100,NONE")]
+        藥名,
+        [Description("中文名,VARCHAR,100,NONE")]
+        中文名,
+        [Description("數量,VARCHAR,100,NONE")]
+        數量,
+        [Description("效期,VARCHAR,100,NONE")]
+        效期
 
 
 
@@ -85,6 +97,89 @@ namespace ClassLibrary
         /// </summary>
         [JsonPropertyName("UI_result")]
         public object UI結果 { get; set; }
+        /// <summary>
+        /// 批號
+        /// </summary>
+        [JsonPropertyName("batch_num")]
+        public string 批號 { get; set; }
+        /// <summary>
+        /// 單號
+        /// </summary>
+        [JsonPropertyName("po_num")]
+        public string 單號 { get; set; }
+        /// <summary>
+        /// 藥名
+        /// </summary>
+        [JsonPropertyName("name")]
+        public string 藥名 { get; set; }
+        /// <summary>
+        /// 中文名
+        /// </summary>
+        [JsonPropertyName("cht_name")]
+        public string 中文名 { get; set; }
+        /// <summary>
+        /// 數量
+        /// </summary>
+        [JsonPropertyName("qty")]
+        public string 數量 { get; set; }
+        /// <summary>
+        /// 效期
+        /// </summary>
+        [JsonPropertyName("expirydate")]
+        public string 效期 { get; set; }
+
+    }
+    /// <summary>
+    /// UIresult資料
+    /// </summary>
+    public class UIresult
+    {
+        /// <summary>
+        /// 唯一KEY
+        /// </summary>
+        [JsonPropertyName("GUID")]
+        public string GUID { get; set; }
+        /// <summary>
+        /// 批號
+        /// </summary>
+        [JsonPropertyName("batch_num")]
+        public string 批號 { get; set; }
+        /// <summary>
+        /// 操作者ID
+        /// </summary>
+        [JsonPropertyName("op_id")]
+        public string 操作者ID { get; set; }
+        /// <summary>
+        /// 操作者姓名
+        /// </summary>
+        [JsonPropertyName("op_name")]
+        public string 操作者姓名 { get; set; }
+        /// <summary>
+        /// 單號
+        /// </summary>
+        [JsonPropertyName("po_num")]
+        public string 單號 { get; set; }
+        /// <summary>
+        /// 藥名
+        /// </summary>
+        [JsonPropertyName("name")]
+        public string 藥名 { get; set; }
+        /// <summary>
+        /// 中文名
+        /// </summary>
+        [JsonPropertyName("cht_name")]
+        public string 中文名 { get; set; }
+        /// <summary>
+        /// 數量
+        /// </summary>
+        [JsonPropertyName("qty")]
+        public string 數量 { get; set; }
+        /// <summary>
+        /// 效期
+        /// </summary>
+        [JsonPropertyName("expirydate")]
+        public string 效期 { get; set; }
+
     }
 
 
@@ -93,6 +188,7 @@ namespace ClassLibrary
         public string GUID { get; set; }
         public string base64 { get; set; }
     }
+    
 
 
 }

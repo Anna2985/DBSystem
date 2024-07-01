@@ -15,7 +15,7 @@ using System.Reflection;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using System.IO;
 using IGeekFan.AspNetCore.Knife4jUI;
-using HIS_DB_Lib;
+
 
 
 namespace DBSystem
@@ -45,7 +45,13 @@ namespace DBSystem
                 });
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+                var xmlFile_ClassLibraby= $"ClassLibrary.xml";
+                var xmlPath_ClassLibraby = Path.Combine(AppContext.BaseDirectory, xmlFile_ClassLibraby);
+
                 c.IncludeXmlComments(xmlPath);
+                c.IncludeXmlComments(xmlPath_ClassLibraby);
+
 
                 c.CustomOperationIds(apiDesc =>
                 {

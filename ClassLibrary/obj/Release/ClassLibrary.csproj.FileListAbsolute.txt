@@ -57,3 +57,7 @@ C:\Users\Administrator\source\repos\DBSystem\ClassLibrary\obj\Release\ClassLibra
 C:\Users\Administrator\source\repos\DBSystem\ClassLibrary\obj\Release\ClassLibrary.csproj.CopyComplete
 C:\Users\Administrator\source\repos\DBSystem\ClassLibrary\obj\Release\ClassLibrary.dll
 C:\Users\Administrator\source\repos\DBSystem\ClassLibrary\obj\Release\ClassLibrary.pdb
+C:\Users\Administrator\source\repos\DBSystem\DBSystem\bin\Release\net5.0\ClassLibrary.dll.config
+C:\Users\Administrator\source\repos\DBSystem\DBSystem\bin\Release\net5.0\ClassLibrary.xml
+C:\Users\Administrator\source\repos\DBSystem\DBSystem\bin\Release\net5.0\ClassLibrary.dll
+C:\Users\Administrator\source\repos\DBSystem\DBSystem\bin\Release\net5.0\ClassLibrary.pdb

@@ -5,7 +5,7 @@ using SQLUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using HIS_DB_Lib;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

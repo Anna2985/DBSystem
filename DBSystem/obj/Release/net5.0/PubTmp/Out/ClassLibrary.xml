@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClassLibrary</name>
+    </assembly>
+    <members>
+        <member name="P:ClassLibrary.returnData.Data">
+            <summary>
+            資料內容回傳或傳入,內容可為任意資料結構JSON格式,依據API自定義
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.Code">
+            <summary>
+            回傳結果碼
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.Method">
+            <summary>
+            執行函式名稱
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.Result">
+            <summary>
+            回傳結果說明
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.Value">
+            <summary>
+            傳入參數(string)由API自定義
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.ValueAry">
+            <summary>
+            傳入參數(stringAry)由API自定義
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.TimeTaken">
+            <summary>
+            執行花費時長
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.Token">
+            <summary>
+            傳入API驗證token碼
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.Server">
+            <summary>
+            傳入Database Server參數
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.DbName">
+            <summary>
+            傳入Database DbName參數
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.TableName">
+            <summary>
+            傳入Database TableName參數
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.Port">
+            <summary>
+            傳入Database Port參數
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.UserName">
+            <summary>
+            傳入Database UserName參數
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.Password">
+            <summary>
+            傳入Database Password參數
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.ServerType">
+            <summary>
+            傳入伺服器 ServerType參數(網頁、調劑台、藥庫....)
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.ServerName">
+            <summary>
+            傳入伺服器 ServerName參數(dps01、ds01...)
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.ServerContent">
+            <summary>
+            傳入伺服器 ServerContent參數(人員資料、藥品資料、一般資料...)
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.returnData.RequestUrl">
+            <summary>
+            回傳觸發請求網址
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.loggerClass">
+            <summary>
+            logger 資料
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.loggerClass.GUID">
+            <summary>
+            唯一KEY
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.loggerClass.網址">
+            <summary>
+            網址
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.loggerClass.項目">
+            <summary>
+            項目
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.loggerClass.操作類型">
+            <summary>
+            操作類型
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.loggerClass.操作者ID">
+            <summary>
+            操作者ID
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.loggerClass.操作者姓名">
+            <summary>
+            操作者姓名
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.loggerClass.操作時間">
+            <summary>
+            操作時間
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.loggerClass.回傳結果">
+            <summary>
+            回傳結果
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.itemClass.GUID">
+            <summary>
+            唯一KEY
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.itemClass.項目中文">
+            <summary>
+            項目中文
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.itemClass.項目英文">
+            <summary>
+            項目英文
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.textVisionClass">
+            <summary>
+            TextVision 資料
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.GUID">
+            <summary>
+            唯一KEY
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.操作者姓名">
+            <summary>
+            操作者姓名
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.操作者ID">
+            <summary>
+            操作者ID
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.圖片">
+            <summary>
+            base64
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.操作時間">
+            <summary>
+            操作時間
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.Log">
+            <summary>
+            Log
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.座標">
+            <summary>
+            座標
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.keyword">
+            <summary>
+            keyword
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.UI結果">
+            <summary>
+            UI結果
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.批號">
+            <summary>
+            批號
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.單號">
+            <summary>
+            單號
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.藥名">
+            <summary>
+            藥名
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.中文名">
+            <summary>
+            中文名
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.數量">
+            <summary>
+            數量
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.效期">
+            <summary>
+            效期
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.UIresult">
+            <summary>
+            UIresult資料
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UIresult.GUID">
+            <summary>
+            唯一KEY
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UIresult.批號">
+            <summary>
+            批號
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UIresult.操作者ID">
+            <summary>
+            操作者ID
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UIresult.操作者姓名">
+            <summary>
+            操作者姓名
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UIresult.單號">
+            <summary>
+            單號
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UIresult.藥名">
+            <summary>
+            藥名
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UIresult.中文名">
+            <summary>
+            中文名
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UIresult.數量">
+            <summary>
+            數量
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UIresult.效期">
+            <summary>
+            效期
+            </summary>
+        </member>
+    </members>
+</doc>

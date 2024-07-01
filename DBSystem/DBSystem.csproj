@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
-    <ProjectReference Include="..\HIS_DB_Lib\HIS_DB_Lib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
