@@ -36,15 +36,51 @@ namespace DBSystem.NewFolder
         /// </remarks>
         /// <param name="returnData">共用傳遞資料結構</param>
         /// <returns></returns>
-        [HttpPost("init")]
+        [HttpPost("init_pcmpo")]
         [Swashbuckle.AspNetCore.Annotations.SwaggerResponse(200, "textVisionClass物件", typeof(textVisionClass))]
-        [Swashbuckle.AspNetCore.Annotations.SwaggerResponse(200, "textVisionClass物件", typeof(UIresult))]
+        [Swashbuckle.AspNetCore.Annotations.SwaggerResponse(200, "UIresult物件", typeof(UIresult))]
+        [Swashbuckle.AspNetCore.Annotations.SwaggerResponse(200, "searchMedCODEClass物件", typeof(searchMedCODEClass))]
         public string init([FromBody] returnData returnData)
         {
             try
             {
-                List<Table> tables = TableManager.CheckCreateTable();
+                List<Table> tables = TableManager.CheckCreateTable("textvision",new enum_textVision());
                 Table table = tables.GetTable(new enum_textVision());
+                if (table == null)
+                {
+                    returnData.Code = -200;
+                    returnData.Result = "table 空白，請檢查使用者!";
+                    return returnData.JsonSerializationt(true);
+                }
+                return table.JsonSerializationt();
+            }
+            catch (Exception ex)
+            {
+                returnData.Code = -200;
+                returnData.Result = $"Exception : {ex.Message}";
+                return returnData.JsonSerializationt(true);
+            }
+        }
+        /// <summary>
+        ///初始化search_medCODE資料庫
+        /// </summary>
+        /// <remarks>
+        /// 以下為JSON範例
+        /// <code>
+        ///     {
+        ///         "ValueAry":[""]
+        ///     }
+        /// </code>
+        /// </remarks>
+        /// <param name="returnData">共用傳遞資料結構</param>
+        /// <returns></returns>
+        [HttpPost("init_search_medCODE")]
+        public string POST_init_search_medCODE([FromBody] returnData returnData)
+        {
+            try
+            {
+                List<Table> tables = TableManager.CheckCreateTable("ds01", new enum_search_medCODE());
+                Table table = tables.GetTable(new enum_search_medCODE());
                 if (table == null)
                 {
                     returnData.Code = -200;
@@ -87,11 +123,11 @@ namespace DBSystem.NewFolder
                 {
                     returnData.Code = -200;
                     returnData.Result = "returnData.Data 空白，請輸入對應欄位資料!";
-                    return returnData.JsonSerializationt();
+                    return returnData.JsonSerializationt(true);
                 }
-                Table table = new Table(new enum_textVision());
-                string tableName = table.TableName;
-                SQLControl sQLControl = new SQLControl("127.0.0.1", "textvision", "user", "66437068");
+                Table table_pcmpo = new Table(new enum_textVision());
+                //string tableName = table_pcmpo.TableName;
+                SQLControl sQLControl_txt = new SQLControl("127.0.0.1", "textvision", "user", "66437068");
                 List<textVisionClass> inputList = returnData.Data.ObjToClass<List<textVisionClass>>();
 
                 textVisionClass textVisionClass = inputList[0];
@@ -100,21 +136,31 @@ namespace DBSystem.NewFolder
 
                 List<textVisionClass> sqlAddList = new List<textVisionClass>() {textVisionClass};
                 List<object[]> addList = sqlAddList.ClassToSQL<textVisionClass, enum_textVision>();
-                sQLControl.AddRows(tableName, addList);
+                sQLControl_txt.AddRows(table_pcmpo.TableName, addList);
 
                 GuidBase guidBase = new GuidBase
                 {
                     GUID = textVisionClass.GUID,
                     base64 = textVisionClass.圖片
                 };
+                DataList dataList = new DataList
+                {
+                    Data = new List<GuidBase> { guidBase }
+                };
 
-                var jsonData = (new List<GuidBase> { guidBase }).JsonSerializationt(true);
+                //var jsonData = (new List<GuidBase> { guidBase }).JsonSerializationt(true);
+                var jsonData = dataList.JsonSerializationt(true);
                 var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                var response = _httpClient.PostAsync("https://ee8d-220-135-128-247.ngrok-free.app/ROI_input", content).Result;
+                var response = _httpClient.PostAsync("https://2bac-220-135-128-247.ngrok-free.app/ROI_input", content).Result;
                 string responseString = response.Content.ReadAsStringAsync().Result;
-                List<textVisionClass> aiInputList = responseString.JsonDeserializet<List<textVisionClass>>();
-
-                textVisionClass aiInput = aiInputList[0];
+                AIResponse aiInputList = responseString.JsonDeserializet<AIResponse>();
+                if (aiInputList.Data == null)
+                {
+                    returnData.Code = -200;
+                    returnData.Result = "請重新輸入照片";
+                    return returnData.JsonSerializationt(true);
+                }
+                textVisionClass aiInput = aiInputList.Data[0];
                 string uiResult = (aiInput.UI結果).ToString();
                 JObject jsonObject = JObject.Parse(uiResult);
                 var infoObject = (JObject)jsonObject["info"];
@@ -138,7 +184,7 @@ namespace DBSystem.NewFolder
                 string name = Regex.Replace(ex_name, pattern2, "");
 
                 string GUID = aiInput.GUID;
-                List<object[]> row_value = sQLControl.GetRowsByDefult(tableName, (int)enum_textVision.GUID, GUID);
+                List<object[]> row_value = sQLControl_txt.GetRowsByDefult(table_pcmpo.TableName, (int)enum_textVision.GUID, GUID);
                 List<textVisionClass> sqlResult = row_value.SQLToClass<textVisionClass, enum_textVision>();
 
                 textVisionClass dbRecord = sqlResult[0];
@@ -152,10 +198,33 @@ namespace DBSystem.NewFolder
                 aiInput.藥名 = name;
                 aiInput.中文名 = cht_name;
                 aiInput.數量 = qty;
+                //string 中文名 = "妥復克膜衣錠４０毫克";
+                SQLControl sQLControl_ds01 = new SQLControl("127.0.0.1", "ds01", "user", "66437068");
+                Table table_med = new Table(new enum_medPageCloud());
+                Table table_sea = new Table(new enum_search_medCODE());
+                List<object[]> code_value = sQLControl_ds01.GetRowsByDefult(table_med.TableName, (int)enum_medPageCloud.中文名稱, cht_name);
+                List<object[]> code_value2 = sQLControl_ds01.GetRowsByDefult(table_sea.TableName, (int)enum_search_medCODE.中文名, cht_name);
+                if (code_value.Count == 0 & code_value2.Count ==0)
+                {
+                    returnData.Code = -200;
+                    returnData.Result = "查無藥品碼";
+                    return returnData.JsonSerializationt(true);
+                }
+                string 藥品碼 = "";
+                if (code_value.Count != 0)
+                {
+                    藥品碼 = code_value[0][(int)enum_medPageCloud.藥品碼].ObjectToString();
+                }
+                if (code_value2.Count != 0)
+                {
+                    藥品碼 = code_value2[0][(int)enum_search_medCODE.藥品碼].ObjectToString();
+                }
+
+                aiInput.藥品碼 = 藥品碼;
 
                 List<textVisionClass> sqlUpdateList = new List<textVisionClass> { aiInput };
                 List<object[]> UpdateList = sqlUpdateList.ClassToSQL<textVisionClass, enum_textVision>();
-                sQLControl.UpdateByDefulteExtra(tableName, UpdateList);
+                sQLControl_txt.UpdateByDefulteExtra(table_pcmpo.TableName, UpdateList);
 
                 UIresult uIresult = new UIresult
                 {
@@ -167,10 +236,11 @@ namespace DBSystem.NewFolder
                     藥名 = name,
                     中文名 = cht_name,
                     數量 = qty,
-                    效期 = expirydate
+                    效期 = expirydate,
+                    藥品碼 = 藥品碼
                 };
                 List<UIresult> uIresults = new List<UIresult>() { uIresult };
-                
+
                 returnData.Code = 200;
                 returnData.Data = uIresults;
                 returnData.TimeTaken = $"{myTimerBasic}";
@@ -179,6 +249,60 @@ namespace DBSystem.NewFolder
                 return returnData.JsonSerializationt(true);
             }
             catch (Exception ex)
+            {
+                returnData.Code = -200;
+                returnData.Result = $"Exception : {ex.Message}";
+                return returnData.JsonSerializationt(true);
+            }
+        }
+        /// <summary>
+        /// 更新檢索表
+        /// </summary>
+        /// <remarks>
+        /// 以下為JSON範例
+        /// <code>
+        ///     {
+        ///         "Data":
+        ///         [
+        ///             [searchMedCODEClass]
+        ///         ]
+        ///         
+        ///     }
+        /// </code>
+        /// </remarks>
+        /// <param name="returnData">共用傳遞資料結構</param>
+        [HttpPost("update_search")]
+        public string POST_update_search([FromBody]returnData returnData)
+        {
+            MyTimerBasic myTimerBasic = new MyTimerBasic();
+            try
+            {
+                if (returnData.Data == null)
+                {
+                    returnData.Code = -200;
+                    returnData.Result = "returnData.Data 空白，請輸入對應欄位資料!";
+                    return returnData.JsonSerializationt(true);
+                }
+                Table table = new Table(new enum_search_medCODE());
+                List<searchMedCODEClass> inputList = returnData.Data.ObjToClass<List<searchMedCODEClass>>();
+                searchMedCODEClass searchMedCODEClass = inputList[0];
+                searchMedCODEClass.GUID = Guid.NewGuid().ToString();
+                List<searchMedCODEClass> search_medCODE = new List<searchMedCODEClass> { searchMedCODEClass };
+                List<object[]> list_search_medCODE_add = new List<object[]>();
+                list_search_medCODE_add = search_medCODE.ClassToSQL<searchMedCODEClass, enum_search_medCODE>();
+
+                SQLControl sQLControl_serchMedCODE = new SQLControl("127.0.0.1", "ds01", "user", "66437068");
+                sQLControl_serchMedCODE.AddRows(table.TableName, list_search_medCODE_add);
+
+                returnData.Data = searchMedCODEClass;
+                returnData.Code = 200;
+                returnData.TimeTaken = $"{myTimerBasic}";
+                returnData.Method = "update_search";
+                returnData.Result = $"新增<{list_search_medCODE_add.Count}>筆";
+                return returnData.JsonSerializationt(true);
+
+            }
+            catch(Exception ex)
             {
                 returnData.Code = -200;
                 returnData.Result = $"Exception : {ex.Message}";
@@ -314,12 +438,13 @@ namespace DBSystem.NewFolder
         }
 
 
+
         public static class TableManager
         {
-            public static List<Table> CheckCreateTable()
+            public static List<Table> CheckCreateTable(string DB, Enum tableEnum)
             {
                 List<Table> tables = new List<Table>();
-                tables.Add(CheckCreateTable("127.0.0.1", "textvision", "user", "66437068", 3306, new enum_textVision()));
+                tables.Add(CheckCreateTable("127.0.0.1", DB, "user", "66437068", 3306, tableEnum));
                 return tables;
             }
 

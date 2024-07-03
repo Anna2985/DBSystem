@@ -4,6 +4,21 @@
         <name>ClassLibrary</name>
     </assembly>
     <members>
+        <member name="P:ClassLibrary.searchMedCODEClass.GUID">
+            <summary>
+            唯一KEY
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.searchMedCODEClass.中文名">
+            <summary>
+            中文名
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.searchMedCODEClass.藥品碼">
+            <summary>
+            藥品碼
+            </summary>
+        </member>
         <member name="P:ClassLibrary.returnData.Data">
             <summary>
             資料內容回傳或傳入,內容可為任意資料結構JSON格式,依據API自定義
@@ -194,7 +209,7 @@
             座標
             </summary>
         </member>
-        <member name="P:ClassLibrary.textVisionClass.keyword">
+        <member name="P:ClassLibrary.textVisionClass.op_keyword">
             <summary>
             keyword
             </summary>
@@ -232,6 +247,11 @@
         <member name="P:ClassLibrary.textVisionClass.效期">
             <summary>
             效期
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.textVisionClass.藥品碼">
+            <summary>
+            藥品碼
             </summary>
         </member>
         <member name="T:ClassLibrary.UIresult">
@@ -282,6 +302,11 @@
         <member name="P:ClassLibrary.UIresult.效期">
             <summary>
             效期
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UIresult.藥品碼">
+            <summary>
+            藥品碼
             </summary>
         </member>
     </members>

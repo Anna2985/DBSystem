@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="medPageCloudClass.cs" />
     <Compile Include="returnData.cs" />
     <Compile Include="loggerClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

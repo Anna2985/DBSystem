@@ -15,34 +15,36 @@ namespace ClassLibrary
     {
         [Description("GUID,VARCHAR,50,PRIMARY")]
         GUID,
-        [Description("操作者姓名,VARCHAR,250,INDEX")]
+        [Description("操作者姓名,VARCHAR,30,INDEX")]
         操作者姓名,
-        [Description("操作者ID,VARCHAR,250,INDEX")]
+        [Description("操作者ID,VARCHAR,30,INDEX")]
         操作者ID,
         [Description("圖片,LONGTEXT,10,NONE")]
         圖片,
-        [Description("操作時間,VARCHAR,250,INDEX")]
+        [Description("操作時間,DATETIME,50,INDEX")]
         操作時間,
         [Description("Log,LONGTEXT,10,NONE")]
         Log,
-        [Description("座標,VARCHAR,500,NONE")]
+        [Description("座標,VARCHAR,50,NONE")]
         座標,
-        [Description("keyword,VARCHAR,500,NONE")]
-        keyword,
-        [Description("UI結果,VARCHAR,1000,NONE")]
+        [Description("op_keyword,VARCHAR,100,NONE")]
+        op_keyword,
+        [Description("UI結果,VARCHAR,500,NONE")]
         UI結果,
-        [Description("批號,VARCHAR,100,NONE")]
+        [Description("批號,VARCHAR,50,NONE")]
         批號,
-        [Description("單號,VARCHAR,100,NONE")]
+        [Description("單號,VARCHAR,50,NONE")]
         單號,
-        [Description("藥名,VARCHAR,100,NONE")]
+        [Description("藥名,VARCHAR,50,NONE")]
         藥名,
-        [Description("中文名,VARCHAR,100,NONE")]
+        [Description("中文名,VARCHAR,50,NONE")]
         中文名,
-        [Description("數量,VARCHAR,100,NONE")]
+        [Description("數量,VARCHAR,10,NONE")]
         數量,
-        [Description("效期,VARCHAR,100,NONE")]
-        效期
+        [Description("效期,DATETIME,50,NONE")]
+        效期,
+        [Description("藥品碼,VARCHAR,50,INDEX")]
+        藥品碼
 
 
 
@@ -90,8 +92,8 @@ namespace ClassLibrary
         /// <summary>
         /// keyword
         /// </summary>
-        [JsonPropertyName("keywords")]
-        public object keyword { get; set; }
+        [JsonPropertyName("op_keywords")]
+        public object op_keyword { get; set; }
         /// <summary>
         /// UI結果
         /// </summary>
@@ -127,7 +129,11 @@ namespace ClassLibrary
         /// </summary>
         [JsonPropertyName("expirydate")]
         public string 效期 { get; set; }
-
+        /// <summary>
+        /// 藥品碼
+        /// </summary>
+        [JsonPropertyName("CODE")]
+        public string 藥品碼 { get; set; }
     }
     /// <summary>
     /// UIresult資料
@@ -179,7 +185,11 @@ namespace ClassLibrary
         /// </summary>
         [JsonPropertyName("expirydate")]
         public string 效期 { get; set; }
-
+        /// <summary>
+        /// 藥品碼
+        /// </summary>
+        [JsonPropertyName("CODE")]
+        public string 藥品碼 { get; set; }
     }
 
 
@@ -189,6 +199,18 @@ namespace ClassLibrary
         public string base64 { get; set; }
     }
     
+    public class DataList
+    {
+        public List<GuidBase> Data { get; set; }
+    }
+    public class AIResponse
+    {
+        public List<textVisionClass> Data { get; set; }
+        public int Code { get; set; }
+        public string Result { get; set; }
+        public List<object> ValueAry { get; set; }
+        public string TimeTaken { get; set; }
 
+    }
 
 }
