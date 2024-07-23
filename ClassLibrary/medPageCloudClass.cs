@@ -32,10 +32,13 @@ namespace ClassLibrary
     {
         [Description("GUID,VARCHAR,50,PRIMARY")]
         GUID,
-        [Description("中文名,VARCHAR,50,NONE")]
-        中文名,
+        [Description("藥名,VARCHAR,50,NONE")]
+        藥名,
         [Description("藥品碼,VARCHAR,50,INDEX")]
-        藥品碼
+        藥品碼,
+        [Description("操作時間,VARCHAR,50,INDEX")]
+        操作時間
+
     }
 
     public class searchMedCODEClass
@@ -48,13 +51,18 @@ namespace ClassLibrary
         /// <summary>
         /// 中文名
         /// </summary>
-        [JsonPropertyName("cht_name")]
-        public string 中文名 { get; set; }
+        [JsonPropertyName("name")]
+        public string 藥名 { get; set; }
         /// <summary>
         /// 藥品碼
         /// </summary>
         [JsonPropertyName("CODE")]
         public string 藥品碼 { get; set; }
+        /// <summary>
+        /// 操作時間
+        /// </summary>
+        [JsonPropertyName("op_time")]
+        public string 操作時間 { get; set; }
     }
 
 

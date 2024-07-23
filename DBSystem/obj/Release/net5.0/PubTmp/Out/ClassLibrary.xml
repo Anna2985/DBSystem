@@ -4,6 +4,26 @@
         <name>ClassLibrary</name>
     </assembly>
     <members>
+        <member name="P:ClassLibrary.searchMedCODEClass.GUID">
+            <summary>
+            唯一KEY
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.searchMedCODEClass.藥名">
+            <summary>
+            中文名
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.searchMedCODEClass.藥品碼">
+            <summary>
+            藥品碼
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.searchMedCODEClass.操作時間">
+            <summary>
+            操作時間
+            </summary>
+        </member>
         <member name="P:ClassLibrary.returnData.Data">
             <summary>
             資料內容回傳或傳入,內容可為任意資料結構JSON格式,依據API自定義
@@ -194,7 +214,7 @@
             座標
             </summary>
         </member>
-        <member name="P:ClassLibrary.textVisionClass.keyword">
+        <member name="P:ClassLibrary.textVisionClass.op_keyword">
             <summary>
             keyword
             </summary>
@@ -234,6 +254,11 @@
             效期
             </summary>
         </member>
+        <member name="P:ClassLibrary.textVisionClass.藥品碼">
+            <summary>
+            藥品碼
+            </summary>
+        </member>
         <member name="T:ClassLibrary.UIresult">
             <summary>
             UIresult資料
@@ -244,11 +269,6 @@
             唯一KEY
             </summary>
         </member>
-        <member name="P:ClassLibrary.UIresult.批號">
-            <summary>
-            批號
-            </summary>
-        </member>
         <member name="P:ClassLibrary.UIresult.操作者ID">
             <summary>
             操作者ID
@@ -257,6 +277,11 @@
         <member name="P:ClassLibrary.UIresult.操作者姓名">
             <summary>
             操作者姓名
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UIresult.批號">
+            <summary>
+            批號
             </summary>
         </member>
         <member name="P:ClassLibrary.UIresult.單號">
@@ -282,6 +307,16 @@
         <member name="P:ClassLibrary.UIresult.效期">
             <summary>
             效期
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UIresult.藥品碼">
+            <summary>
+            藥品碼
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.UIresult.操作時間">
+            <summary>
+            操作時間
             </summary>
         </member>
     </members>

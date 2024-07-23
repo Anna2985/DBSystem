@@ -149,9 +149,9 @@ namespace DBSystem.NewFolder
                 };
 
                 //var jsonData = (new List<GuidBase> { guidBase }).JsonSerializationt(true);
-                var jsonData = dataList.JsonSerializationt(true);
+                string jsonData = dataList.JsonSerializationt(true);
                 var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                var response = _httpClient.PostAsync("https://2bac-220-135-128-247.ngrok-free.app/ROI_input", content).Result;
+                var response = _httpClient.PostAsync("https://53b1-220-135-128-247.ngrok-free.app/ROI_input", content).Result;
                 string responseString = response.Content.ReadAsStringAsync().Result;
                 AIResponse aiInputList = responseString.JsonDeserializet<AIResponse>();
                 if (aiInputList.Data == null)
@@ -201,9 +201,9 @@ namespace DBSystem.NewFolder
                 //string 中文名 = "妥復克膜衣錠４０毫克";
                 SQLControl sQLControl_ds01 = new SQLControl("127.0.0.1", "ds01", "user", "66437068");
                 Table table_med = new Table(new enum_medPageCloud());
-                Table table_sea = new Table(new enum_search_medCODE());
-                List<object[]> code_value = sQLControl_ds01.GetRowsByDefult(table_med.TableName, (int)enum_medPageCloud.中文名稱, cht_name);
-                List<object[]> code_value2 = sQLControl_ds01.GetRowsByDefult(table_sea.TableName, (int)enum_search_medCODE.中文名, cht_name);
+                Table table_sch = new Table(new enum_search_medCODE());
+                List<object[]> code_value = sQLControl_ds01.GetRowsByDefult(table_med.TableName, (int)enum_medPageCloud.藥品名稱, name);
+                List<object[]> code_value2 = sQLControl_ds01.GetRowsByDefult(table_sch.TableName, (int)enum_search_medCODE.藥名, name);
                 if (code_value.Count == 0 & code_value2.Count ==0)
                 {
                     returnData.Code = -200;
@@ -237,7 +237,8 @@ namespace DBSystem.NewFolder
                     中文名 = cht_name,
                     數量 = qty,
                     效期 = expirydate,
-                    藥品碼 = 藥品碼
+                    藥品碼 = 藥品碼,
+                    操作時間 = aiInput.操作時間
                 };
                 List<UIresult> uIresults = new List<UIresult>() { uIresult };
 
@@ -287,6 +288,7 @@ namespace DBSystem.NewFolder
                 List<searchMedCODEClass> inputList = returnData.Data.ObjToClass<List<searchMedCODEClass>>();
                 searchMedCODEClass searchMedCODEClass = inputList[0];
                 searchMedCODEClass.GUID = Guid.NewGuid().ToString();
+                searchMedCODEClass.操作時間 = DateTime.Now.ToDateTimeString();
                 List<searchMedCODEClass> search_medCODE = new List<searchMedCODEClass> { searchMedCODEClass };
                 List<object[]> list_search_medCODE_add = new List<object[]>();
                 list_search_medCODE_add = search_medCODE.ClassToSQL<searchMedCODEClass, enum_search_medCODE>();
@@ -356,8 +358,8 @@ namespace DBSystem.NewFolder
 
                 if (inputClass.批號 != sqlClass.批號) sqlClass.批號 = inputClass.批號;
                 if (inputClass.單號 != sqlClass.單號) sqlClass.單號 = inputClass.單號;
-                if (inputClass.藥名 != sqlClass.藥名) sqlClass.藥名 = inputClass.藥名;
-                if (inputClass.中文名 != sqlClass.中文名) sqlClass.中文名 = inputClass.中文名;
+                //if (inputClass.藥名 != sqlClass.藥名) sqlClass.藥名 = inputClass.藥名;
+                //if (inputClass.中文名 != sqlClass.中文名) sqlClass.中文名 = inputClass.中文名;
                 if (inputClass.數量 != sqlClass.數量) sqlClass.數量 = inputClass.數量;
                 if (inputClass.效期 != sqlClass.效期) sqlClass.效期 = inputClass.效期;
 

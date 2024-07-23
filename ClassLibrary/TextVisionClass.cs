@@ -146,11 +146,6 @@ namespace ClassLibrary
         [JsonPropertyName("GUID")]
         public string GUID { get; set; }
         /// <summary>
-        /// 批號
-        /// </summary>
-        [JsonPropertyName("batch_num")]
-        public string 批號 { get; set; }
-        /// <summary>
         /// 操作者ID
         /// </summary>
         [JsonPropertyName("op_id")]
@@ -160,6 +155,11 @@ namespace ClassLibrary
         /// </summary>
         [JsonPropertyName("op_name")]
         public string 操作者姓名 { get; set; }
+        /// <summary>
+        /// 批號
+        /// </summary>
+        [JsonPropertyName("batch_num")]
+        public string 批號 { get; set; }
         /// <summary>
         /// 單號
         /// </summary>
@@ -190,6 +190,11 @@ namespace ClassLibrary
         /// </summary>
         [JsonPropertyName("CODE")]
         public string 藥品碼 { get; set; }
+        /// <summary>
+        /// 操作時間
+        /// </summary>
+        [JsonPropertyName("op_time")]
+        public string 操作時間 { get; set; }
     }
 
 

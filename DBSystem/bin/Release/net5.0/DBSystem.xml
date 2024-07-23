@@ -4,111 +4,6 @@
         <name>DBSystem</name>
     </assembly>
     <members>
-        <member name="M:DBSystem.NewFolder.PCMPO.init(ClassLibrary.returnData)">
-             <summary>
-            初始化pcmpo資料庫
-             </summary>
-             <remarks>
-             以下為JSON範例
-             <code>
-                 {
-                     "ValueAry":[""]
-                 }
-             </code>
-             </remarks>
-             <param name="returnData">共用傳遞資料結構</param>
-             <returns></returns>
-        </member>
-        <member name="M:DBSystem.NewFolder.PCMPO.POST_init_search_medCODE(ClassLibrary.returnData)">
-             <summary>
-            初始化search_medCODE資料庫
-             </summary>
-             <remarks>
-             以下為JSON範例
-             <code>
-                 {
-                     "ValueAry":[""]
-                 }
-             </code>
-             </remarks>
-             <param name="returnData">共用傳遞資料結構</param>
-             <returns></returns>
-        </member>
-        <member name="M:DBSystem.NewFolder.PCMPO.POST_analyze(ClassLibrary.returnData)">
-            <summary>
-            執行文字辨識
-            </summary>
-            <remarks>
-            以下為JSON範例
-            <code>
-                {
-                    "Data":
-                    [
-                        [textVisionClass]
-                    ]
-                    
-                }
-            </code>
-            </remarks>
-            <param name="returnData">共用傳遞資料結構</param>
-            <returns></returns>
-        </member>
-        <member name="M:DBSystem.NewFolder.PCMPO.POST_update_search(ClassLibrary.returnData)">
-            <summary>
-            更新檢索表
-            </summary>
-            <remarks>
-            以下為JSON範例
-            <code>
-                {
-                    "Data":
-                    [
-                        [searchMedCODEClass]
-                    ]
-                    
-                }
-            </code>
-            </remarks>
-            <param name="returnData">共用傳遞資料結構</param>
-        </member>
-        <member name="M:DBSystem.NewFolder.PCMPO.POST_edit(ClassLibrary.returnData)">
-            <summary>
-            以GUID更新資料庫
-            </summary>
-            <remarks>
-            以下為JSON範例
-            <code>
-                {
-                    "Data":
-                    [
-                        [UIresult]
-                    ]
-                    
-                }
-            </code>
-            </remarks>
-            <param name="returnData">共用傳遞資料結構</param>
-            <returns></returns>
-        </member>
-        <member name="M:DBSystem.NewFolder.PCMPO.POST_delete(ClassLibrary.returnData)">
-            <summary>
-            以GUID刪除資料庫
-            </summary>
-            <remarks>
-            以下為JSON範例
-            <code>
-                {
-                    "ValueAry":
-                    [
-                        "GUID"
-                    ]
-                    
-                }
-            </code>
-            </remarks>
-            <param name="returnData">共用傳遞資料結構</param>
-            <returns></returns>
-        </member>
         <member name="M:Logger_API.Controllers.LoggerController.init(ClassLibrary.returnData)">
              <summary>
             初始化Logger資料庫
@@ -230,6 +125,111 @@
             <code>
                 {
                     "ValueAry":[""]
+                }
+            </code>
+            </remarks>
+            <param name="returnData">共用傳遞資料結構</param>
+            <returns></returns>
+        </member>
+        <member name="M:DBSystem.NewFolder.PCMPO.init(ClassLibrary.returnData)">
+             <summary>
+            初始化pcmpo資料庫
+             </summary>
+             <remarks>
+             以下為JSON範例
+             <code>
+                 {
+                     "ValueAry":[""]
+                 }
+             </code>
+             </remarks>
+             <param name="returnData">共用傳遞資料結構</param>
+             <returns></returns>
+        </member>
+        <member name="M:DBSystem.NewFolder.PCMPO.POST_init_search_medCODE(ClassLibrary.returnData)">
+             <summary>
+            初始化search_medCODE資料庫
+             </summary>
+             <remarks>
+             以下為JSON範例
+             <code>
+                 {
+                     "ValueAry":[""]
+                 }
+             </code>
+             </remarks>
+             <param name="returnData">共用傳遞資料結構</param>
+             <returns></returns>
+        </member>
+        <member name="M:DBSystem.NewFolder.PCMPO.POST_analyze(ClassLibrary.returnData)">
+            <summary>
+            執行文字辨識
+            </summary>
+            <remarks>
+            以下為JSON範例
+            <code>
+                {
+                    "Data":
+                    [
+                        [textVisionClass]
+                    ]
+                    
+                }
+            </code>
+            </remarks>
+            <param name="returnData">共用傳遞資料結構</param>
+            <returns></returns>
+        </member>
+        <member name="M:DBSystem.NewFolder.PCMPO.POST_update_search(ClassLibrary.returnData)">
+            <summary>
+            更新檢索表
+            </summary>
+            <remarks>
+            以下為JSON範例
+            <code>
+                {
+                    "Data":
+                    [
+                        [searchMedCODEClass]
+                    ]
+                    
+                }
+            </code>
+            </remarks>
+            <param name="returnData">共用傳遞資料結構</param>
+        </member>
+        <member name="M:DBSystem.NewFolder.PCMPO.POST_edit(ClassLibrary.returnData)">
+            <summary>
+            以GUID更新資料庫
+            </summary>
+            <remarks>
+            以下為JSON範例
+            <code>
+                {
+                    "Data":
+                    [
+                        [UIresult]
+                    ]
+                    
+                }
+            </code>
+            </remarks>
+            <param name="returnData">共用傳遞資料結構</param>
+            <returns></returns>
+        </member>
+        <member name="M:DBSystem.NewFolder.PCMPO.POST_delete(ClassLibrary.returnData)">
+            <summary>
+            以GUID刪除資料庫
+            </summary>
+            <remarks>
+            以下為JSON範例
+            <code>
+                {
+                    "ValueAry":
+                    [
+                        "GUID"
+                    ]
+                    
                 }
             </code>
             </remarks>
