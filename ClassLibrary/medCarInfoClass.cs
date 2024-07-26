@@ -10,7 +10,7 @@ using System.ComponentModel;
 namespace ClassLibrary
 {
     [EnumDescription("med_carInfo")]
-    public enum enum_藥車資訊
+    public enum enum_病床資訊
     {
         [Description("GUID,VARCHAR,50,PRIMARY")]
         GUID,
@@ -29,15 +29,82 @@ namespace ClassLibrary
         [Description("占床狀態,VARCHAR,10,NONE")]
         占床狀態,
         [Description("調劑狀態,VARCHAR,10,NONE")]
-        調劑狀態
+        調劑狀態,
+        [Description("性別,VARCHAR,10,NONE")]
+        性別,
+        [Description("出生日期,VARCHAR,10,NONE")]
+        出生日期,
+        [Description("科別,VARCHAR,10,NONE")]
+        科別,
+        [Description("財務,VARCHAR,10,NONE")]
+        財務,
+        [Description("入院日期,VARCHAR,10,NONE")]
+        入院日期,
+        [Description("訪視號碼,VARCHAR,10,NONE")]
+        訪視號碼,
+        [Description("診所名稱,VARCHAR,10,NONE")]
+        診所名稱,
+        [Description("醫生姓名,VARCHAR,10,NONE")]
+        醫生姓名,
+        [Description("身高,VARCHAR,10,NONE")]
+        身高,
+        [Description("體重,VARCHAR,10,NONE")]
+        體重,
+        [Description("體表面積,VARCHAR,10,NONE")]
+        體表面積,
+        [Description("國際疾病分類代碼1,VARCHAR,10,NONE")]
+        國際疾病分類代碼1,
+        [Description("疾病說明1,VARCHAR,10,NONE")]
+        疾病說明1,
+        [Description("國際疾病分類代碼2,VARCHAR,10,NONE")]
+        國際疾病分類代碼2,
+        [Description("疾病說明2,VARCHAR,10,NONE")]
+        疾病說明2,
+        [Description("國際疾病分類代碼3,VARCHAR,10,NONE")]
+        國際疾病分類代碼3,
+        [Description("疾病說明3,VARCHAR,10,NONE")]
+        疾病說明3,
+        [Description("國際疾病分類代碼4,VARCHAR,10,NONE")]
+        國際疾病分類代碼4,
+        [Description("疾病說明4,VARCHAR,10,NONE")]
+        疾病說明4,
+        [Description("鼻胃管使用狀況,VARCHAR,10,NONE")]
+        鼻胃管使用狀況,
+        [Description("其他管路使用狀況,VARCHAR,10,NONE")]
+        其他管路使用狀況,
+        [Description("過敏史,VARCHAR,10,NONE")]
+        過敏史,
+        [Description("白蛋白,VARCHAR,10,NONE")]
+        白蛋白,
+        [Description("肌酸酐,VARCHAR,10,NONE")]
+        肌酸酐,
+        [Description("估算腎小球過濾率,VARCHAR,10,NONE")]
+        估算腎小球過濾率,
+        [Description("丙氨酸氨基轉移酶,VARCHAR,10,NONE")]
+        丙氨酸氨基轉移酶,
+        [Description("鉀離子,VARCHAR,10,NONE")]
+        鉀離子,
+        [Description("鈣離子,VARCHAR,10,NONE")]
+        鈣離子,
+        [Description("總膽紅素,VARCHAR,10,NONE")]
+        總膽紅素,
+        [Description("鈉離子,VARCHAR,10,NONE")]
+        鈉離子,
+        [Description("白血球計數,VARCHAR,10,NONE")]
+        白血球計數,
+        [Description("血紅素,VARCHAR,10,NONE")]
+        血紅素,
+        [Description("血小板計數,VARCHAR,10,NONE")]
+        血小板計數,
+        [Description("國際標準化比率,VARCHAR,10,NONE")]
+        國際標準化比率
+
     }
     public class medCarInfoClass
     {
         [JsonPropertyName("GUID")]
-
         public string GUID { get; set; }
         [JsonPropertyName("pnamec")]
-
         public string 姓名 { get; set; }
         [JsonPropertyName("caseno")]
         public string 住院號 { get; set; }
@@ -53,5 +120,79 @@ namespace ClassLibrary
         public string 占床狀態 { get; set; }
         [JsonPropertyName("dispens_status")]
         public string 調劑狀態 { get; set; }
+        [JsonPropertyName("hsexc")]
+        public string 性別 { get; set; }
+        [JsonPropertyName("pbirth8")]
+        public string 出生日期 { get; set; }
+        [JsonPropertyName("psectc")]
+        public string 科別 { get; set; }
+        [JsonPropertyName("pfinc")]
+        public string 財務 { get; set; }
+        [JsonPropertyName("padmdt")]
+        public string 入院日期 { get; set; }
+        [JsonPropertyName("pvsdo")]
+        public string 訪視號碼 { get; set; }
+        [JsonPropertyName("pvsnam")]
+        public string 診所名稱 { get; set; }
+        [JsonPropertyName("prnam")]
+        public string 醫生姓名 { get; set; }
+        [JsonPropertyName("pbhight")]
+        public string 身高 { get; set; }
+        [JsonPropertyName("pbweight")]
+        public string 體重 { get; set; }
+        [JsonPropertyName("pbbsa")]
+        public string 體表面積 { get; set; }
+        [JsonPropertyName("hicd1")]
+        public string 國際疾病分類代碼1 { get; set; }
+        [JsonPropertyName("hicdtx1")]
+        public string 疾病說明1 { get; set; }
+        [JsonPropertyName("hicd2")]
+        public string 國際疾病分類代碼2 { get; set; }
+        [JsonPropertyName("hicdtx2")]
+        public string 疾病說明2 { get; set; }
+        [JsonPropertyName("hicd3")]
+        public string 國際疾病分類代碼3 { get; set; }
+        [JsonPropertyName("hicdtx3")]
+        public string 疾病說明3 { get; set; }
+        [JsonPropertyName("4")]
+        public string 國際疾病分類代碼4 { get; set; }
+        [JsonPropertyName("hicdtx4")]
+        public string 疾病說明4 { get; set; }
+        [JsonPropertyName("ngtube")]
+        public string 鼻胃管使用狀況 { get; set; }
+        [JsonPropertyName("tube")]
+        public string 其他管路使用狀況 { get; set; }
+        [JsonPropertyName("hallergy")]
+        public string 過敏史 { get; set; }
+        [JsonPropertyName("testResult")]
+        public string 檢驗結果 { get; set; }
+
+    }
+    public class testResult
+    {
+        [JsonPropertyName("rtalb")]
+        public string 白蛋白 { get; set; }
+        [JsonPropertyName("rtcrea")]
+        public string 肌酸酐 { get; set; }
+        [JsonPropertyName("rtegfrm")]
+        public string 估算腎小球過濾率 { get; set; }
+        [JsonPropertyName("rtalt")]
+        public string 丙氨酸氨基轉移酶 { get; set; }
+        [JsonPropertyName("rtk")]
+        public string 鉀離子 { get; set; }
+        [JsonPropertyName("rtca")]
+        public string 鈣離子 { get; set; }
+        [JsonPropertyName("rttb")]
+        public string 總膽紅素 { get; set; }
+        [JsonPropertyName("rtna")]
+        public string 鈉離子 { get; set; }
+        [JsonPropertyName("rtwbc")]
+        public string 白血球計數 { get; set; }
+        [JsonPropertyName("rthgb")]
+        public string 血紅素 { get; set; }
+        [JsonPropertyName("rtptl")]
+        public string 血小板計數 { get; set; }
+        [JsonPropertyName("rtinr")]
+        public string 國際標準化比率 { get; set; }
     }
 }
