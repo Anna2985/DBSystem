@@ -204,9 +204,13 @@ namespace ClassLibrary
         public string base64 { get; set; }
     }
     
-    public class DataList
+    public class DataList<T>
     {
-        public List<GuidBase> Data { get; set; }
+        public List<T> Data { get; set; }
+        public DataList()
+        {
+            Data = new List<T>();
+        }
     }
     public class AIResponse
     {

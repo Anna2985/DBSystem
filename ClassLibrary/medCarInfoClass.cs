@@ -74,30 +74,35 @@ namespace ClassLibrary
         其他管路使用狀況,
         [Description("過敏史,VARCHAR,10,NONE")]
         過敏史,
-        [Description("白蛋白,VARCHAR,10,NONE")]
-        白蛋白,
-        [Description("肌酸酐,VARCHAR,10,NONE")]
-        肌酸酐,
-        [Description("估算腎小球過濾率,VARCHAR,10,NONE")]
-        估算腎小球過濾率,
-        [Description("丙氨酸氨基轉移酶,VARCHAR,10,NONE")]
-        丙氨酸氨基轉移酶,
-        [Description("鉀離子,VARCHAR,10,NONE")]
-        鉀離子,
-        [Description("鈣離子,VARCHAR,10,NONE")]
-        鈣離子,
-        [Description("總膽紅素,VARCHAR,10,NONE")]
-        總膽紅素,
-        [Description("鈉離子,VARCHAR,10,NONE")]
-        鈉離子,
-        [Description("白血球計數,VARCHAR,10,NONE")]
-        白血球計數,
-        [Description("血紅素,VARCHAR,10,NONE")]
-        血紅素,
-        [Description("血小板計數,VARCHAR,10,NONE")]
-        血小板計數,
-        [Description("國際標準化比率,VARCHAR,10,NONE")]
-        國際標準化比率
+        [Description("檢驗結果,VARCHAR,500,NONE")]
+        檢驗結果,
+        [Description("處方,VARCHAR,500,NONE")]
+        處方
+
+        //[Description("白蛋白,VARCHAR,10,NONE")]
+        //白蛋白,
+        //[Description("肌酸酐,VARCHAR,10,NONE")]
+        //肌酸酐,
+        //[Description("估算腎小球過濾率,VARCHAR,10,NONE")]
+        //估算腎小球過濾率,
+        //[Description("丙氨酸氨基轉移酶,VARCHAR,10,NONE")]
+        //丙氨酸氨基轉移酶,
+        //[Description("鉀離子,VARCHAR,10,NONE")]
+        //鉀離子,
+        //[Description("鈣離子,VARCHAR,10,NONE")]
+        //鈣離子,
+        //[Description("總膽紅素,VARCHAR,10,NONE")]
+        //總膽紅素,
+        //[Description("鈉離子,VARCHAR,10,NONE")]
+        //鈉離子,
+        //[Description("白血球計數,VARCHAR,10,NONE")]
+        //白血球計數,
+        //[Description("血紅素,VARCHAR,10,NONE")]
+        //血紅素,
+        //[Description("血小板計數,VARCHAR,10,NONE")]
+        //血小板計數,
+        //[Description("國際標準化比率,VARCHAR,10,NONE")]
+        //國際標準化比率
 
     }
     public class medCarInfoClass
@@ -165,9 +170,19 @@ namespace ClassLibrary
         [JsonPropertyName("hallergy")]
         public string 過敏史 { get; set; }
         [JsonPropertyName("testResult")]
-        public string 檢驗結果 { get; set; }
+        public object 檢驗結果 { get; set; }
+        [JsonPropertyName("prescription")]
+        public object 處方 { get; set; }
+        public class ICP_By_bedNum : IComparer<medCarInfoClass>
+        {
+            public int Compare(medCarInfoClass x, medCarInfoClass y)
+            {
+                return (x.床號.StringToInt32()).CompareTo(y.床號.StringToInt32());
+            }
+        }
 
     }
+
     public class testResult
     {
         [JsonPropertyName("rtalb")]
@@ -195,4 +210,5 @@ namespace ClassLibrary
         [JsonPropertyName("rtinr")]
         public string 國際標準化比率 { get; set; }
     }
+    
 }

@@ -143,10 +143,8 @@ namespace DBSystem.NewFolder
                     GUID = textVisionClass.GUID,
                     base64 = textVisionClass.圖片
                 };
-                DataList dataList = new DataList
-                {
-                    Data = new List<GuidBase> { guidBase }
-                };
+                DataList<GuidBase> dataList = new DataList<GuidBase>();
+                dataList.Data.Add(guidBase);
 
                 //var jsonData = (new List<GuidBase> { guidBase }).JsonSerializationt(true);
                 string jsonData = dataList.JsonSerializationt(true);
