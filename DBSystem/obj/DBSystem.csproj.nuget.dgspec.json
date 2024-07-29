@@ -1,14 +1,14 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\Source\\Repos\\DBSystem\\DBSystem\\DBSystem.csproj": {}
+    "C:\\Users\\Administrator\\source\\repos\\DBSystem\\DBSystem\\DBSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\Source\\Repos\\DBSystem\\ClassLibrary\\ClassLibrary.csproj": {
+    "C:\\Users\\Administrator\\source\\repos\\DBSystem\\ClassLibrary\\ClassLibrary.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Source\\Repos\\DBSystem\\ClassLibrary\\ClassLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\DBSystem\\ClassLibrary\\ClassLibrary.csproj",
         "projectName": "ClassLibrary",
-        "projectPath": "C:\\Users\\Administrator\\Source\\Repos\\DBSystem\\ClassLibrary\\ClassLibrary.csproj",
+        "projectPath": "C:\\Users\\Administrator\\source\\repos\\DBSystem\\ClassLibrary\\ClassLibrary.csproj",
         "frameworks": {
           "net461": {
             "projectReferences": {}
@@ -19,14 +19,14 @@
         "net461": {}
       }
     },
-    "C:\\Users\\Administrator\\Source\\Repos\\DBSystem\\DBSystem\\DBSystem.csproj": {
+    "C:\\Users\\Administrator\\source\\repos\\DBSystem\\DBSystem\\DBSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Source\\Repos\\DBSystem\\DBSystem\\DBSystem.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\DBSystem\\DBSystem\\DBSystem.csproj",
         "projectName": "DBSystem",
-        "projectPath": "C:\\Users\\Administrator\\Source\\Repos\\DBSystem\\DBSystem\\DBSystem.csproj",
+        "projectPath": "C:\\Users\\Administrator\\source\\repos\\DBSystem\\DBSystem\\DBSystem.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Source\\Repos\\DBSystem\\DBSystem\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\source\\repos\\DBSystem\\DBSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,8 +43,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Administrator\\Source\\Repos\\DBSystem\\ClassLibrary\\ClassLibrary.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\Source\\Repos\\DBSystem\\ClassLibrary\\ClassLibrary.csproj"
+              "C:\\Users\\Administrator\\source\\repos\\DBSystem\\ClassLibrary\\ClassLibrary.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\source\\repos\\DBSystem\\ClassLibrary\\ClassLibrary.csproj"
               }
             }
           }

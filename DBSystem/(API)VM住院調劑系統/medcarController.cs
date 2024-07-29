@@ -36,64 +36,64 @@ namespace DBSystem._API_VM住院調劑系統
                 if (returnData.ValueAry.Count != 2)
                 {
                     returnData.Code = -200;
-                    returnData.Result = $"returnData.ValueAry 內容應為[住院藥局, 護理站]";
+                    returnData.Result = $"returnData.ValueAry 內容應為[藥局, 護理站]";
                     return returnData.JsonSerializationt(true);
                 }
-                string 住院藥局 = returnData.ValueAry[0];
+                string 藥局 = returnData.ValueAry[0];
                 string 護理站 = returnData.ValueAry[1];
                 List<medCarInfoClass> medCarInfoClasses = new List<medCarInfoClass>();
                 //以下請修改
                 medCarInfoClass value1 = new medCarInfoClass
                 {
-                    住院藥局 = 住院藥局,
+                    藥局 = 藥局,
                     護理站 = 護理站,
                     床號 = "18",
                     病歷號 = "50487939",
                     住院號 = "31463236",
                     姓名 = "克里斯",
-                    占床狀態 = "已佔床"
+                    占床狀態 = "已占床"
 
                 };
                 medCarInfoClasses.Add(value1);
                 medCarInfoClass value2 = new medCarInfoClass
                 {
-                    住院藥局 = 住院藥局,
+                    藥局 = 藥局,
                     護理站 = 護理站,
                     床號 = "7",
                     病歷號 = "21702181",
                     住院號 = "31540178",
                     姓名 = "方可炫",
-                    占床狀態 = "已佔床"
+                    占床狀態 = "已占床"
 
                 };
                 medCarInfoClasses.Add(value2);
                 medCarInfoClass value3 = new medCarInfoClass
                 {
-                    住院藥局 = 住院藥局,
+                    藥局 = 藥局,
                     護理站 = 護理站,
                     床號 = "2",
                     病歷號 = "41168109",
                     住院號 = "31580064",
                     姓名 = "安迪",
-                    占床狀態 = "已佔床"
+                    占床狀態 = "已占床"
 
                 };
                 medCarInfoClasses.Add(value3);
                 medCarInfoClass value4 = new medCarInfoClass
                 {
-                    住院藥局 = 住院藥局,
+                    藥局 = 藥局,
                     護理站 = 護理站,
                     床號 = "20",
                     病歷號 = "78945",
                     住院號 = "777777",
                     姓名 = "湯馬士",
-                    占床狀態 = "已佔床"
+                    占床狀態 = "已占床"
 
                 };
-                medCarInfoClasses.Add(value1);
+                medCarInfoClasses.Add(value4);
                 medCarInfoClass value5 = new medCarInfoClass
                 {
-                    住院藥局 = 住院藥局,
+                    藥局 = 藥局,
                     護理站 = 護理站,
                     床號 = "50",
                     病歷號 = "",
@@ -108,7 +108,7 @@ namespace DBSystem._API_VM住院調劑系統
                 //呼叫另一隻SP
                 for(int i = 0; i < medCarInfoClasses.Count; i++)
                 {
-                    if(medCarInfoClasses[i].占床狀態 == "已佔床")
+                    if(medCarInfoClasses[i].占床狀態 == "已占床")
                     {
                         string 病歷號 = medCarInfoClasses[i].病歷號;
                         string 住院號 = medCarInfoClasses[i].住院號;
@@ -135,7 +135,7 @@ namespace DBSystem._API_VM住院調劑系統
                         medCarInfoClasses[i].鼻胃管使用狀況 = "";
                         medCarInfoClasses[i].其他管路使用狀況 = "";
                         medCarInfoClasses[i].過敏史 = "";
-
+                        List<testResult> testResults = new List<testResult>();
                         testResult testResult = new testResult
                         {
                             白蛋白 = "",
@@ -151,7 +151,8 @@ namespace DBSystem._API_VM住院調劑系統
                             血小板計數 = "",
                             國際標準化比率 = "",
                         };
-                        medCarInfoClasses[i].檢驗結果 = testResult;
+                        testResults.Add(testResult);
+                        medCarInfoClasses[i].檢驗結果 = testResults;
                     }             
                 }
                 //以上要改
@@ -159,35 +160,18 @@ namespace DBSystem._API_VM住院調劑系統
                 serverSettingClasses = serverSettingClasses.MyFind("Main", "網頁", "VM端");
                 string Server = serverSettingClasses[0].Server;
                 uint Port = (uint)serverSettingClasses[0].Port.StringToInt32();
-
-                //string url = $"{HttpContext.Request.Scheme}://{Server}:4433/api/med_cart/update";
                 string url = $"http://{Server}:4436/api/med_cart/update_bed_list";
-
-                //List<string> names = new List<string> { "Data" };
-                //string json = medCarInfoClasses.JsonSerializationt();
-                //var medCarInfoList = json.JsonDeserializet<List<object>>();
-                //var dataWrapper = new { Data = medCarInfoList };
-                //string wrappedJson = dataWrapper.JsonSerializationt(); 
-                //List<string> values = new List<string> { wrappedJson };
-                //string result = Basic.Net.WEBApiPost(url, names, values);
                 DataList<medCarInfoClass> dataList = new DataList<medCarInfoClass>
                 {
                     Data = new List<medCarInfoClass>(medCarInfoClasses)
                 };
                 string jsonData = dataList.JsonSerializationt(true);
-                //List<string> names = new List<string> { "json" };
-                //List<string> values = new List<string> { jsonData };
-                //string result = Basic.Net.WEBApiPost(url, names, values);
-
-                HttpClient httpClient = new HttpClient();
-                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                var response = httpClient.PostAsync(url, content).Result;
-                string responseString = response.Content.ReadAsStringAsync().Result;
+                string responseString = Basic.Net.WEBApiPostJson(url, jsonData, false);
                 returnData result = responseString.JsonDeserializet<returnData>();
 
                 returnData.Code = 200;
                 returnData.TimeTaken = $"{myTimerBasic}";
-                returnData.Data = result.Data;
+                returnData.Data = dataList;
                 returnData.Result = $"取得 {護理站} 的病床資訊共筆";
                 return returnData.JsonSerializationt(true);
             }
@@ -198,8 +182,8 @@ namespace DBSystem._API_VM住院調劑系統
                 return returnData.JsonSerializationt(true);
             }
         }
-        [HttpPost("get_bed_info")]
-        public string get_cpoe_by_caseno([FromBody]returnData returnData)
+        [HttpPost("get_cpoe_by_bedNum")]
+        public string get_cpoe_by_bedNum([FromBody]returnData returnData)
         {
             MyTimerBasic myTimerBasic = new MyTimerBasic();
             try
@@ -213,35 +197,50 @@ namespace DBSystem._API_VM住院調劑系統
                 if (returnData.ValueAry.Count != 3)
                 {
                     returnData.Code = -200;
-                    returnData.Result = $"returnData.ValueAry 內容應為[住院藥局, 護理站, 住院號]";
+                    returnData.Result = $"returnData.ValueAry 內容應為[藥局, 護理站, 床號]";
                     return returnData.JsonSerializationt(true);
                 }
-                string 住院藥局 = returnData.ValueAry[0];
+                string 藥局 = returnData.ValueAry[0];
                 string 護理站 = returnData.ValueAry[1];
-                string 住院號 = returnData.ValueAry[2];
+                string 床號 = returnData.ValueAry[2];
                 //更新病床資訊
-                List<string> ValueAry = new List<string> { 住院藥局, 護理站, 住院號 };
-                string url = $"http://127.0.0.1:4436/api/medcar/get_bed_list_by_cart";
-                string jsonData = ValueAry.JsonSerializationt(true);
-                HttpClient httpClient = new HttpClient();
-                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                var response = httpClient.PostAsync(url, content).Result;
-                //取得目標病人資料
-                url = "http://127.0.0.1:4436/api/med_cart/get_bed_list_by_cart";
-                content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                response = httpClient.PostAsync(url, content).Result;
-                string responseString = response.Content.ReadAsStringAsync().Result;
-                returnData result = responseString.JsonDeserializet<returnData>();
-                medCarInfoClass medCarInfo = (result.Data).ObjToClass<medCarInfoClass>();
-                List<medCarInfoClass> target_patient = new List<medCarInfoClass>(){medCarInfo};
+                List<ServerSettingClass> serverSettingClasses = ServerSettingClassMethod.WebApiGet($"{API_Server}");
+                serverSettingClasses = serverSettingClasses.MyFind("Main", "網頁", "VM端");
+                string Server = serverSettingClasses[0].Server;
+                uint Port = (uint)serverSettingClasses[0].Port.StringToInt32();
+                DataList<object[]> dataList = new DataList<object[]>()
+                {
+                    ValueAry = new List<string> { 藥局, 護理站 }
+                };
+                string url = $"http://{Server}:4436/api/medcar/get_bed_list_by_cart";
+                string jsonData = dataList.JsonSerializationt(true);
+                string responseString = Basic.Net.WEBApiPostJson(url, jsonData, false);
 
+                //取得目標病人資料
+                url = $"http://{Server}:4436/api/med_cart/get_patient_by_bedNum";
+                dataList = new DataList<object[]>()
+                {
+                    ValueAry = new List<string> { 藥局, 護理站, 床號 }
+                };
+                jsonData = dataList.JsonSerializationt(true);
+                responseString = Basic.Net.WEBApiPostJson(url, jsonData, false);
+                returnData result = responseString.JsonDeserializet<returnData>();
+                List<medCarInfoClass> target_patient = (result.Data).ObjToClass<List<medCarInfoClass>>();
+
+                if (target_patient.Count != 1)
+                {
+                    returnData.Code = -200;
+                    returnData.Result = $"資料錯誤";
+                    return returnData.JsonSerializationt(true);
+                }
 
                 //從SP取得處方資料
-                List<medCpoeClass> prescription = new List<medCpoeClass>(); 
+                string 住院號 = target_patient[0].住院號;
+                List<medCpoeClass> prescription = new List<medCpoeClass>();
                 medCpoeClass value1 = new medCpoeClass
                 {
                     住院號 = 住院號,
-                    序號 = "",                   
+                    序號 = "",
                     狀態 = "",
                     開始日期 = "",
                     開始時間 = "",
@@ -250,7 +249,7 @@ namespace DBSystem._API_VM住院調劑系統
                     藥碼 = "",
                     頻次代碼 = "",
                     頻次屬性 = "",
-                    藥品名 = "",
+                    藥品名 = "abcde",
                     途徑 = "",
                     數量 = "",
                     劑量 = "",
@@ -277,28 +276,60 @@ namespace DBSystem._API_VM住院調劑系統
                     交互作用等級 = ""
                 };
                 prescription.Add(value1);
-                prescription.Add(value1);
-                target_patient[0].處方 = prescription;
-
-                //server
-                url = $"http://127.0.0.1:4436/api/med_cart/update_bed_list";
-
-                
-                DataList<medCpoeClass> dataList = new DataList<medCpoeClass>
+                medCpoeClass value2 = new medCpoeClass
                 {
-                    Data = new List<medCpoeClass>(prescription)
+                    住院號 = 住院號,
+                    序號 = "",
+                    狀態 = "",
+                    開始日期 = "",
+                    開始時間 = "",
+                    結束日期 = "",
+                    結束時間 = "",
+                    藥碼 = "",
+                    頻次代碼 = "",
+                    頻次屬性 = "",
+                    藥品名 = "efgh",
+                    途徑 = "",
+                    數量 = "",
+                    劑量 = "",
+                    單位 = "",
+                    期限 = "",
+                    自動包藥機 = "",
+                    化癌分類 = "",
+                    自購 = "",
+                    血液製劑註記 = "",
+                    處方醫師 = "",
+                    處方醫師姓名 = "",
+                    操作人員 = "",
+                    藥局代碼 = "",
+                    大瓶點滴 = "",
+                    LKFLAG = "",
+                    排序 = "",
+                    判讀藥師代碼 = "",
+                    判讀FLAG = "",
+                    勿磨 = "",
+                    抗生素等級 = "",
+                    重複用藥 = "",
+                    配藥天數 = "",
+                    交互作用 = "",
+                    交互作用等級 = ""
                 };
-                jsonData = dataList.JsonSerializationt(true);
-                
-
-                content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                response = httpClient.PostAsync(url, content).Result;
-                responseString = response.Content.ReadAsStringAsync().Result;
-                result = responseString.JsonDeserializet<returnData>();
+                prescription.Add(value2);
+                target_patient[0].處方 = prescription;
+                List<medCarInfoClass> update_list = new List<medCarInfoClass>();
+                update_list.Add(target_patient[0]);
+                //server
+                url = $"http://{Server}:4436/api/med_cart/update_bed_list";
+                DataList<medCarInfoClass> dataList_class = new DataList<medCarInfoClass>
+                {
+                    Data = new List<medCarInfoClass> (update_list)
+                };
+                jsonData = dataList_class.JsonSerializationt(true);
+                responseString = Basic.Net.WEBApiPostJson(url, jsonData, false);
 
                 returnData.Code = 200;
                 returnData.TimeTaken = $"{myTimerBasic}";
-                returnData.Data = target_patient[0];
+                returnData.Data = update_list;
                 returnData.Result = $"取得{target_patient[0].姓名}的處方";
                 return returnData.JsonSerializationt(true);
             }
@@ -309,6 +340,7 @@ namespace DBSystem._API_VM住院調劑系統
                 return returnData.JsonSerializationt(true);
             }
         }
+
 
     }
 }

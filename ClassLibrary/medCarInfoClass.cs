@@ -20,8 +20,8 @@ namespace ClassLibrary
         住院號,
         [Description("病歷號,VARCHAR,50,NONE")]
         病歷號,
-        [Description("住院藥局,VARCHAR,10,NONE")]
-        住院藥局,
+        [Description("藥局,VARCHAR,10,NONE")]
+        藥局,
         [Description("護理站,VARCHAR,10,NONE")]
         護理站,
         [Description("床號,VARCHAR,10,NONE")]
@@ -74,9 +74,9 @@ namespace ClassLibrary
         其他管路使用狀況,
         [Description("過敏史,VARCHAR,10,NONE")]
         過敏史,
-        [Description("檢驗結果,VARCHAR,500,NONE")]
+        [Description("檢驗結果,LONGTEXT,500,NONE")]
         檢驗結果,
-        [Description("處方,VARCHAR,500,NONE")]
+        [Description("處方,LONGTEXT,10,NONE")]
         處方
 
         //[Description("白蛋白,VARCHAR,10,NONE")]
@@ -116,7 +116,7 @@ namespace ClassLibrary
         [JsonPropertyName("histno")]
         public string 病歷號 { get; set; }
         [JsonPropertyName("phar")]
-        public string 住院藥局 { get; set; }
+        public string 藥局 { get; set; }
         [JsonPropertyName("hnursta")]
         public string 護理站 { get; set; }
         [JsonPropertyName("hbedno")]
@@ -159,7 +159,7 @@ namespace ClassLibrary
         public string 國際疾病分類代碼3 { get; set; }
         [JsonPropertyName("hicdtx3")]
         public string 疾病說明3 { get; set; }
-        [JsonPropertyName("4")]
+        [JsonPropertyName("hicd4")]
         public string 國際疾病分類代碼4 { get; set; }
         [JsonPropertyName("hicdtx4")]
         public string 疾病說明4 { get; set; }

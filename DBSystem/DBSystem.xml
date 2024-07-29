@@ -131,6 +131,21 @@
             <param name="returnData">共用傳遞資料結構</param>
             <returns></returns>
         </member>
+        <member name="M:DBSystem._API_Server住院調劑系統.med_cartController.init_med_carinfo(ClassLibrary.returnData)">
+             <summary>
+            初始化dbvm.med_carinfo資料庫
+             </summary>
+             <remarks>
+             以下為JSON範例
+             <code>
+                 {
+                     "ValueAry":[""]
+                 }
+             </code>
+             </remarks>
+             <param name="returnData">共用傳遞資料結構</param>
+             <returns></returns>
+        </member>
         <member name="M:DBSystem.NewFolder.PCMPO.init(ClassLibrary.returnData)">
              <summary>
             初始化pcmpo資料庫

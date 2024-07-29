@@ -207,9 +207,11 @@ namespace ClassLibrary
     public class DataList<T>
     {
         public List<T> Data { get; set; }
+        public List<string> ValueAry { get; set; }
         public DataList()
         {
             Data = new List<T>();
+            ValueAry = new List<string>();
         }
     }
     public class AIResponse
