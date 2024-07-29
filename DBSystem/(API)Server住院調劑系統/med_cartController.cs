@@ -287,7 +287,7 @@ namespace DBSystem._API_Server住院調劑系統
                     returnData.Result = $"資料錯誤";
                     return returnData.JsonSerializationt(true);
                 }
-                List<medCpoeClass> 處方 = targetPatient[0].處方.ObjToClass<List<medCpoeClass>>();
+                List<medCpoeClass> 處方 = ((string)targetPatient[0].處方).JsonDeserializet<List<medCpoeClass>>();
                 List<medCpoeClass> targetMed = new List<medCpoeClass>();
 
                 for (int i = 0; i < returnData.ValueAry.Count; i++)
@@ -303,8 +303,14 @@ namespace DBSystem._API_Server住院調劑系統
                         return returnData.JsonSerializationt(true);
                     }
                     targetMed[0].調劑狀態 = "已調劑";
+                }  
+
+                List<medCpoeClass> medCpoeClasses = new List<medCpoeClass>();
+                for (int i = 0; i < 處方.Count; i++)
+                {
+                    medCpoeClasses.Add(處方[i]);
                 }
-                targetPatient[0].處方 = 處方;
+                targetPatient[0].處方 = medCpoeClasses;
                 List<object[]> list_medCart_repalce = new List<object[]>();
                 list_medCart_repalce = targetPatient.ClassToSQL<medCarInfoClass, enum_病床資訊>();
 
