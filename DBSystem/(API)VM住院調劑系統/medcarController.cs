@@ -233,7 +233,8 @@ namespace DBSystem._API_VM住院調劑系統
                     returnData.Result = $"資料錯誤";
                     return returnData.JsonSerializationt(true);
                 }
-
+                List<medCpoeClass> medCpoeClasses = ((string)target_patient[0].處方).JsonDeserializet<List<medCpoeClass>>();
+                
                 //從SP取得處方資料
                 string 住院號 = target_patient[0].住院號;
                 List<medCpoeClass> prescription = new List<medCpoeClass>();

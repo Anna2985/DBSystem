@@ -288,41 +288,45 @@ namespace DBSystem._API_Server住院調劑系統
                     return returnData.JsonSerializationt(true);
                 }
                 List<medCpoeClass> 處方 = ((string)targetPatient[0].處方).JsonDeserializet<List<medCpoeClass>>();
-                List<medCpoeClass> targetMed = new List<medCpoeClass>();
-
-                for (int i = 0; i < returnData.ValueAry.Count; i++)
-                {
-                    string 藥品名 = returnData.ValueAry[i];
-                    targetMed = (from temp in 處方
-                                 where temp.藥品名 == 藥品名
-                                 select temp).ToList();
-                    if (targetMed.Count != 1)
-                    {
-                        returnData.Code = -200;
-                        returnData.Result = $"資料錯誤";
-                        return returnData.JsonSerializationt(true);
-                    }
-                    targetMed[0].調劑狀態 = "已調劑";
-                }  
-
                 List<medCpoeClass> medCpoeClasses = new List<medCpoeClass>();
+            
+                int 處方數量 = 處方.Count;
+                int 處方已調劑數量 = 0;
                 for (int i = 0; i < 處方.Count; i++)
                 {
-                    medCpoeClasses.Add(處方[i]);
+                    medCpoeClass value = 處方[i];
+                    if (returnData.ValueAry.Contains(value.藥品名))
+                    {
+                        value.調劑狀態 = "已調劑";
+                        處方已調劑數量 += 1;
+                    }
+                    else
+                    {
+                        value.調劑狀態 = "";
+                    }
+                    medCpoeClasses.Add(value);
                 }
-                targetPatient[0].處方 = medCpoeClasses;
+                if (處方已調劑數量 == 處方數量)
+                {
+                    targetPatient[0].調劑狀態 = "已完成";
+                }
+                else
+                {
+                    targetPatient[0].調劑狀態 = "";
+                }
+
+                string cpoe = medCpoeClasses.JsonSerializationt();    
+                targetPatient[0].處方 = cpoe;
+
                 List<object[]> list_medCart_repalce = new List<object[]>();
                 list_medCart_repalce = targetPatient.ClassToSQL<medCarInfoClass, enum_病床資訊>();
-
                 if (list_medCart_repalce.Count > 0) sQLControl_med_carInfo.UpdateByDefulteExtra(null, list_medCart_repalce);
 
                 returnData.Code = 200;
                 returnData.TimeTaken = $"{myTimerBasic}";
-                returnData.Data = "";
+                returnData.Data = targetPatient;
                 returnData.Result = $"";
                 return returnData.JsonSerializationt(true);
-
-
             }
             catch(Exception ex)
             {
