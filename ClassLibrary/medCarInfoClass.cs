@@ -135,7 +135,7 @@ namespace ClassLibrary
         public string 財務 { get; set; }
         [JsonPropertyName("padmdt")]
         public string 入院日期 { get; set; }
-        [JsonPropertyName("pvsdo")]
+        [JsonPropertyName("pvsdno")]
         public string 訪視號碼 { get; set; }
         [JsonPropertyName("pvsnam")]
         public string 診所名稱 { get; set; }

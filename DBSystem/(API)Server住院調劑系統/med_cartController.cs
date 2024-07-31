@@ -96,7 +96,7 @@ namespace DBSystem._API_Server住院調劑系統
                 List<medCarInfoClass> medCart_sql_replace = new List<medCarInfoClass>();
                 List<medCarInfoClass> input_medCarInfo = returnData.Data.ObjToClass<List<medCarInfoClass>>();
 
-                // 示範輸出
+                
 
                 if (input_medCarInfo == null)
                 {
@@ -135,6 +135,7 @@ namespace DBSystem._API_Server住院調劑系統
                         else
                         {
                             medCarInfoClass medCarInfoClass = input_medCarInfo[i];
+                            input_medCarInfo[i].GUID = sql_medCart.GUID;
                             medCart_sql_replace.Add(input_medCarInfo[i]);
                         }
 
