@@ -10,7 +10,7 @@ using System.ComponentModel;
 namespace ClassLibrary
 {
     [EnumDescription("med_carInfo")]
-    public enum enum_病床資訊
+    public enum enum_med_carInfo
     {
         [Description("GUID,VARCHAR,50,PRIMARY")]
         GUID,
@@ -78,38 +78,12 @@ namespace ClassLibrary
         檢驗結果,
         [Description("處方,LONGTEXT,10,NONE")]
         處方
-
-        //[Description("白蛋白,VARCHAR,10,NONE")]
-        //白蛋白,
-        //[Description("肌酸酐,VARCHAR,10,NONE")]
-        //肌酸酐,
-        //[Description("估算腎小球過濾率,VARCHAR,10,NONE")]
-        //估算腎小球過濾率,
-        //[Description("丙氨酸氨基轉移酶,VARCHAR,10,NONE")]
-        //丙氨酸氨基轉移酶,
-        //[Description("鉀離子,VARCHAR,10,NONE")]
-        //鉀離子,
-        //[Description("鈣離子,VARCHAR,10,NONE")]
-        //鈣離子,
-        //[Description("總膽紅素,VARCHAR,10,NONE")]
-        //總膽紅素,
-        //[Description("鈉離子,VARCHAR,10,NONE")]
-        //鈉離子,
-        //[Description("白血球計數,VARCHAR,10,NONE")]
-        //白血球計數,
-        //[Description("血紅素,VARCHAR,10,NONE")]
-        //血紅素,
-        //[Description("血小板計數,VARCHAR,10,NONE")]
-        //血小板計數,
-        //[Description("國際標準化比率,VARCHAR,10,NONE")]
-        //國際標準化比率
-
     }
     public class medCarInfoClass
     {
         [JsonPropertyName("GUID")]
         public string GUID { get; set; }
-        [JsonPropertyName("pnamec")]
+        [JsonPropertyName("pt_name")]
         public string 姓名 { get; set; }
         [JsonPropertyName("caseno")]
         public string 住院號 { get; set; }
@@ -180,7 +154,82 @@ namespace ClassLibrary
                 return (x.床號.StringToInt32()).CompareTo(y.床號.StringToInt32());
             }
         }
+        static public List<medCarInfoClass> update_bed_list(string API_Server, List<medCarInfoClass> medCarInfoClasses)
+        {
+            List<medCarInfoClass> out_medCarInfoClass = new List<medCarInfoClass>();
+            string url = $"http://{API_Server}/api/med_cart/update_bed_list";
 
+            returnData returnData = new returnData();
+            returnData.Data = medCarInfoClasses;
+            //returnData.ServerName = ServerName;
+
+            string json_in = returnData.JsonSerializationt();
+            string json_out = Net.WEBApiPostJson(url, json_in);
+            returnData = json_out.JsonDeserializet<returnData>();
+            if (returnData == null) return null;
+            if (returnData.Code != 200) return null;
+            out_medCarInfoClass = returnData.Data.ObjToClass<List<medCarInfoClass>>();
+            out_medCarInfoClass.Sort(new medCarInfoClass.ICP_By_bedNum());
+            return out_medCarInfoClass;
+        }
+        static public List<medCarInfoClass> get_patient_by_bedNum(string API_Server, List<string> Info)
+        {
+            List<medCarInfoClass> out_medCarInfoClass = new List<medCarInfoClass>();
+            string url = $"http://{API_Server}/api/med_cart/get_patient_by_bedNum";
+            string str = "";
+            for (int i = 0; i < Info.Count; i++)
+            {
+                str += Info[i];
+                if (i != Info.Count - 1) str += ",";
+            }
+            returnData returnData = new returnData();
+            returnData.ValueAry.Add(str);
+            string json_in = returnData.JsonSerializationt();
+            string json_out = Net.WEBApiPostJson(url, json_in);
+            returnData = json_out.JsonDeserializet<returnData>();
+            if (returnData == null) return null;
+            if (returnData.Code != 200) return null;
+            out_medCarInfoClass = returnData.Data.ObjToClass<List<medCarInfoClass>>();
+            out_medCarInfoClass.Sort(new medCarInfoClass.ICP_By_bedNum());
+            return out_medCarInfoClass;
+
+        }
+        static public List<medCarInfoClass> get_patient_by_hnursta(string API_Server, List<string> Info)
+        {
+            List<medCarInfoClass> out_medCarInfoClass = new List<medCarInfoClass>();
+            string url = $"http://{API_Server}/api/med_cart/get_patient_by_hnursta";
+            string str = "";
+            for (int i = 0; i < Info.Count; i++)
+            {
+                str += Info[i];
+                if (i != Info.Count - 1) str += ",";
+            }
+            returnData returnData = new returnData();
+            returnData.ValueAry.Add(str);
+            string json_in = returnData.JsonSerializationt();
+            string json_out = Net.WEBApiPostJson(url, json_in);
+            returnData = json_out.JsonDeserializet<returnData>();
+            if (returnData == null) return null;
+            if (returnData.Code != 200) return null;
+            out_medCarInfoClass = returnData.Data.ObjToClass<List<medCarInfoClass>>();
+            out_medCarInfoClass.Sort(new medCarInfoClass.ICP_By_bedNum());
+            return out_medCarInfoClass;
+
+        }
+        static public List<medCarInfoClass> get_all(string API_Server)
+        {
+            List<medCarInfoClass> out_medCarInfoClass = new List<medCarInfoClass>();
+            string url = $"http://{API_Server}/api/med_cart/get_all";         
+            returnData returnData = new returnData();
+            string json_in = returnData.JsonSerializationt();
+            string json_out = Net.WEBApiPostJson(url, json_in);
+            returnData = json_out.JsonDeserializet<returnData>();
+            if (returnData == null) return null;
+            if (returnData.Code != 200) return null;
+            out_medCarInfoClass = returnData.Data.ObjToClass<List<medCarInfoClass>>();
+            out_medCarInfoClass.Sort(new medCarInfoClass.ICP_By_bedNum());
+            return out_medCarInfoClass;
+        }
     }
 
     public class testResult

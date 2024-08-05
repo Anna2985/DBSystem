@@ -131,7 +131,82 @@
             <param name="returnData">共用傳遞資料結構</param>
             <returns></returns>
         </member>
-        <member name="M:DBSystem._API_Server住院調劑系統.med_cartController.init_med_carinfo(ClassLibrary.returnData)">
+        <member name="M:DBSystem._API_Server住院調劑系統.medCarList.init_med_carinfo(ClassLibrary.returnData)">
+             <summary>
+            初始化dbvm.med_carList資料庫
+             </summary>
+             <remarks>
+             以下為JSON範例
+             <code>
+                 {
+                     "ValueAry":[""]
+                 }
+             </code>
+             </remarks>
+             <param name="returnData">共用傳遞資料結構</param>
+             <returns></returns>
+        </member>
+        <member name="M:DBSystem._API_Server住院調劑系統.medCarList.add(ClassLibrary.returnData)">
+             <summary>
+            新增護理站資料
+             </summary>
+             <remarks>
+             以下為JSON範例
+             <code>
+                 {
+                     "ValueAry":[藥局, 護理站]
+                 }
+             </code>
+             </remarks>
+             <param name="returnData">共用傳遞資料結構</param>
+             <returns></returns>
+        </member>
+        <member name="M:DBSystem._API_Server住院調劑系統.medCarList.delete(ClassLibrary.returnData)">
+             <summary>
+            刪除護理站資料
+             </summary>
+             <remarks>
+             以下為JSON範例
+             <code>
+                 {
+                     "ValueAry":[藥局, 護理站]
+                 }
+             </code>
+             </remarks>
+             <param name="returnData">共用傳遞資料結構</param>
+             <returns></returns>
+        </member>
+        <member name="M:DBSystem._API_Server住院調劑系統.medCarList.get_medcar_by_phar(ClassLibrary.returnData)">
+             <summary>
+            取得藥局護理站資料
+             </summary>
+             <remarks>
+             以下為JSON範例
+             <code>
+                 {
+                     "ValueAry":[藥局]
+                 }
+             </code>
+             </remarks>
+             <param name="returnData">共用傳遞資料結構</param>
+             <returns></returns>
+        </member>
+        <member name="M:DBSystem._API_Server住院調劑系統.medCarList.get_phar(ClassLibrary.returnData)">
+             <summary>
+            取得藥局資料
+             </summary>
+             <remarks>
+             以下為JSON範例
+             <code>
+                 {
+                     "ValueAry":[]
+                 }
+             </code>
+             </remarks>
+             <param name="returnData">共用傳遞資料結構</param>
+             <returns></returns>
+        </member>
+        <member name="M:DBSystem._API_Server住院調劑系統.med_cart.init_med_carinfo(ClassLibrary.returnData)">
              <summary>
             初始化dbvm.med_carinfo資料庫
              </summary>
@@ -140,6 +215,73 @@
              <code>
                  {
                      "ValueAry":[""]
+                 }
+             </code>
+             </remarks>
+             <param name="returnData">共用傳遞資料結構</param>
+             <returns></returns>
+        </member>
+        <member name="M:DBSystem._API_Server住院調劑系統.med_cart.get_patient_by_bedNum(ClassLibrary.returnData)">
+             <summary>
+            以護理站和床號取得處方
+             </summary>
+             <remarks>
+             以下為JSON範例
+             <code>
+                 {
+                     "ValueAry":[藥局, 護理站, 床號]
+                 }
+             </code>
+             </remarks>
+             <param name="returnData">共用傳遞資料結構</param>
+             <returns></returns>
+        </member>
+        <member name="M:DBSystem._API_Server住院調劑系統.med_cart.get_patient_by_hnursta(ClassLibrary.returnData)">
+             <summary>
+            以護理站取得處方
+             </summary>
+             <remarks>
+             以下為JSON範例
+             <code>
+                 {
+                     "ValueAry":[藥局, 護理站, 床號]
+                 }
+             </code>
+             </remarks>
+             <param name="returnData">共用傳遞資料結構</param>
+             <returns></returns>
+        </member>
+        <member name="M:DBSystem._API_Server住院調劑系統.med_cart.get_all(ClassLibrary.returnData)">
+             <summary>
+            取得所有資料
+             </summary>
+             <remarks>
+             以下為JSON範例
+             <code>
+                 {
+                     "Data":[]
+                 }
+             </code>
+             </remarks>
+             <param name="returnData">共用傳遞資料結構</param>
+             <returns></returns>
+        </member>
+        <member name="M:DBSystem._API_Server住院調劑系統.med_cart.check_dispense(ClassLibrary.returnData)">
+             <summary>
+            確認藥品調劑
+             </summary>
+             <remarks>
+             以下為JSON範例
+             <code>
+                 {
+                     "Data":[
+                         {
+                             "phar": "藥車",
+                             "hnursta": "護理站",
+                             "hbedno": "床號"
+                         }
+                     ]
+                     "ValueAry":["藥品名"]
                  }
              </code>
              </remarks>

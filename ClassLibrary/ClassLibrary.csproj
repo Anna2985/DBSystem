@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="medCarInfoClass.cs" />
+    <Compile Include="medCarList.cs" />
     <Compile Include="medCpoeClass.cs" />
     <Compile Include="medPageCloudClass.cs" />
     <Compile Include="MethodClass.cs" />

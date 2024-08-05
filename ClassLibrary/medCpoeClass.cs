@@ -12,7 +12,7 @@ namespace ClassLibrary
     //病床處方
     //Computerized Physician Order Entry
     [EnumDescription("med_cpoe")]
-    public enum enum_病床處方
+    public enum enum_med_cpoe
     {
         [Description("調劑狀態,VARCHAR,10,NONE")]
         調劑狀態,
@@ -105,13 +105,13 @@ namespace ClassLibrary
         public string 結束日期 { get; set; }
         [JsonPropertyName("endtm")]
         public string 結束時間 { get; set; }
-        [JsonPropertyName("drgno")]
+        [JsonPropertyName("code")]
         public string 藥碼 { get; set; }
         [JsonPropertyName("freqn")]
         public string 頻次代碼 { get; set; }
         [JsonPropertyName("frqatr")]
         public string 頻次屬性 { get; set; }
-        [JsonPropertyName("drgnam")]
+        [JsonPropertyName("name")]
         public string 藥品名 { get; set; }
         [JsonPropertyName("route")]
         public string 途徑 { get; set; }
